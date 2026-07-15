@@ -1,0 +1,281 @@
+/* Copilot Training — shared styles
+   Palette: pine ink on cool paper, teal actions, amber reserved for PHI rules only. */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+  --ink: #182e29;
+  --ink-soft: #45605a;
+  --paper: #fafbf8;
+  --mist: #e9efec;
+  --line: #c9d6d1;
+  --teal: #0f766e;
+  --teal-dark: #0b5a54;
+  --amber: #b45309;
+  --amber-pale: #fcf3e6;
+  --display: "Fraunces", Georgia, serif;
+  --body: "Public Sans", -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a { color: var(--teal); }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.wrap {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ---------- top bar ---------- */
+.topbar {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.topbar .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+.wordmark {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+.topbar nav a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+.topbar nav a:hover { color: var(--teal); }
+
+/* ---------- hub hero ---------- */
+.hero { padding: 4rem 0 2.5rem; }
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  max-width: 20ch;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--teal);
+}
+.hero p {
+  max-width: 52ch;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---------- how it works ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 1.5rem 0 3rem;
+}
+.steps div strong {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.3rem;
+}
+.steps div p { margin: 0; font-size: 0.9rem; color: var(--ink-soft); }
+@media (max-width: 640px) { .steps { grid-template-columns: 1fr; } }
+
+/* ---------- module cards (chart-divider motif) ---------- */
+.modules { list-style: none; margin: 0 0 4rem; padding: 0; }
+.modules li { margin: 2.1rem 0; }
+
+.module-card {
+  position: relative;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 0 6px 6px 6px;
+  background: #fff;
+  padding: 1.35rem 1.5rem 1.25rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 120ms ease, transform 120ms ease;
+}
+.module-card:hover {
+  border-color: var(--teal);
+  transform: translateX(4px);
+}
+/* the divider tab */
+.module-card .tab {
+  position: absolute;
+  top: -1.45rem;
+  left: -1px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.7rem;
+  background: var(--mist);
+  border: 1px solid var(--line);
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  color: var(--ink-soft);
+}
+.module-card:hover .tab { background: var(--teal); color: #fff; border-color: var(--teal); }
+.module-card h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0 0 0.35rem;
+}
+.module-card p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+.module-card .meta {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--teal);
+}
+.module-card.flagged { border-left: 4px solid var(--amber); }
+
+/* ---------- module page header ---------- */
+.module-head {
+  background: var(--mist);
+  border-bottom: 1px solid var(--line);
+  padding: 2.75rem 0 2.25rem;
+}
+.module-head .code {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+}
+.module-head h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin: 0.4rem 0 0.6rem;
+  line-height: 1.2;
+}
+.module-head .est {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---------- module body ---------- */
+main.module { padding: 2.5rem 0 4rem; }
+main.module h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin: 2.5rem 0 0.75rem;
+}
+main.module ul { padding-left: 1.2rem; }
+main.module li { margin: 0.4rem 0; }
+
+/* PHI rule callout — amber is used for these and nothing else */
+.phi {
+  border-left: 4px solid var(--amber);
+  background: var(--amber-pale);
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.75rem 0;
+}
+.phi .label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.phi p { margin: 0; }
+.phi p + p { margin-top: 0.6rem; }
+
+/* Microsoft Learn link list */
+.learn-links { list-style: none; padding: 0; }
+.learn-links li {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin: 0.6rem 0;
+  background: #fff;
+}
+.learn-links a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+}
+.learn-links a:hover { background: var(--mist); }
+.learn-links .src {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-top: 0.15rem;
+}
+
+/* quiz CTA */
+.quiz {
+  margin-top: 3rem;
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
+}
+.quiz a.button {
+  display: inline-block;
+  background: var(--teal);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
+}
+.quiz a.button:hover { background: var(--teal-dark); }
+.quiz .note { font-size: 0.85rem; color: var(--ink-soft); }
+
+/* pager */
+.pager {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+}
+
+/* footer */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 1.75rem 0 2.5rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .module-card { transition: none; }
+  .module-card:hover { transform: none; }
+}
